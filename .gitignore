@@ -1,0 +1,26 @@
+# --- ROS 2 Directories ---
+install/
+build/
+log/
+
+# --- Python Patterns ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# --- C++ Patterns ---
+*.o
+*.so
+*.a
+
+# --- Documentation Artifacts ---
+*.dox
+*.wikidoc
+
+# --- IDE/Editor Specific (Optional) ---
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
