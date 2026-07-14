@@ -50,6 +50,9 @@ public:
     }
 
 private:
+    std::deque<sensor_msgs::msg::PointCloud2::SharedPtr> cloud_buffer_;
+    const size_t buffer_size_ = 5;
+    
     void cloudCallback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
     {
         sensor_msgs::msg::LaserScan scan;
@@ -67,53 +70,58 @@ private:
         scan.range_min = range_min_;
         scan.range_max = range_max_;
 
-        const float init = use_inf_
-                               ? std::numeric_limits<float>::infinity()
-                               : static_cast<float>(range_max_ + 1.0);
+        const float init = use_inf_? std::numeric_limits<float>::infinity(): static_cast<float>(range_max_ + 1.0);
 
+                               
+        cloud_buffer_.push_back(msg);
+        if (cloud_buffer_.size() > buffer_size_) {
+            cloud_buffer_.pop_front();
+        }
         scan.ranges.assign(num_readings_, init);
 
-        sensor_msgs::PointCloud2ConstIterator<float> iter_x(*msg, "x");
-        sensor_msgs::PointCloud2ConstIterator<float> iter_y(*msg, "y");
-        sensor_msgs::PointCloud2ConstIterator<float> iter_z(*msg, "z");
+        for (const auto& cloud : cloud_buffer_) {
+            sensor_msgs::PointCloud2ConstIterator<float> iter_x(*cloud, "x");
+            sensor_msgs::PointCloud2ConstIterator<float> iter_y(*cloud, "y");
+            sensor_msgs::PointCloud2ConstIterator<float> iter_z(*cloud, "z");
 
-        for (; iter_x != iter_x.end(); ++iter_x, ++iter_y, ++iter_z)
-        {
-            const float x = *iter_x;
-            const float y = *iter_y;
-            const float z = *iter_z;
-
-            if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z))
+            for (; iter_x != iter_x.end(); ++iter_x, ++iter_y, ++iter_z)
             {
-                continue;
-            }
+                const float x = *iter_x;
+                const float y = *iter_y;
+                const float z = *iter_z;
 
-            if (z < min_height_ || z > max_height_)
-            {
-                continue;
-            }
+                if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z))
+                {
+                    continue;
+                }
 
-            const float range = std::sqrt(x * x + y * y);
-            if (range < range_min_ || range > range_max_)
-            {
-                continue;
-            }
+                if (z < min_height_ || z > max_height_)
+                {
+                    continue;
+                }
 
-            const float angle = std::atan2(y, x);
-            if (angle < angle_min_ || angle > angle_max_)
-            {
-                continue;
-            }
+                const float range = std::sqrt(x * x + y * y);
+                if (range < range_min_ || range > range_max_)
+                {
+                    continue;
+                }
 
-            const size_t index = static_cast<size_t>((angle - angle_min_) / angle_increment_);
-            if (index >= scan.ranges.size())
-            {
-                continue;
-            }
+                const float angle = std::atan2(y, x);
+                if (angle < angle_min_ || angle > angle_max_)
+                {
+                    continue;
+                }
 
-            if (range < scan.ranges[index])
-            {
-                scan.ranges[index] = range;
+                const size_t index = static_cast<size_t>((angle - angle_min_) / angle_increment_);
+                if (index >= scan.ranges.size())
+                {
+                    continue;
+                }
+
+                if (range < scan.ranges[index])
+                {
+                    scan.ranges[index] = range;
+                }
             }
         }
 

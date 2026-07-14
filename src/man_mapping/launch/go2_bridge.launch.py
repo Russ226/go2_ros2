@@ -35,16 +35,19 @@ def generate_launch_description():
         ),
 
        Node(
-            package='man_mapping',
-            executable='cloud_to_scan',
+            package='pointcloud_to_laserscan',
+            executable='pointcloud_to_laserscan_node',
             name='cloud_to_scan',
             output='screen',
+            remappings=[
+                ('cloud_in', '/utlidar/cloud'),
+                ('scan', '/scan'),
+            ],
             parameters=[{
-                'cloud_topic': '/utlidar/cloud',
-                'scan_topic': '/scan',
-                'output_frame': 'utlidar_lidar',
-                'min_height': -10.0,
-                'max_height': 10.0,
+                'target_frame': '',
+                'transform_tolerance': 0.01,
+                'min_height': -0.05,
+                'max_height': 0.30,
                 'angle_min': -3.14159,
                 'angle_max': 3.14159,
                 'angle_increment': 0.01745,
@@ -52,6 +55,7 @@ def generate_launch_description():
                 'range_min': 0.10,
                 'range_max': 30.0,
                 'use_inf': True,
+                'inf_epsilon': 1.0,
             }]
         ),
     ])

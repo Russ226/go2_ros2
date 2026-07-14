@@ -30,6 +30,10 @@ install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}
 )
+install(DIRECTORY
+  rviz
+  DESTINATION share/${PROJECT_NAME}
+)
 
 install(TARGETS
   cloud_to_scan
