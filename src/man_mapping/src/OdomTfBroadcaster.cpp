@@ -17,12 +17,13 @@ public:
         declare_parameter("odom_frame", "odom");
         declare_parameter("base_frame", "base_link");
         declare_parameter("base_footprint", "base_footprint");
+        declare_parameter("publish_tf", true); 
 
         odom_topic_ = get_parameter("odom_topic").as_string();
         odom_frame_ = get_parameter("odom_frame").as_string();
         base_frame_ = get_parameter("base_frame").as_string();
         base_footprint_ = get_parameter("base_footprint").as_string();
-
+        publish_tf_ = get_parameter("publish_tf").as_bool();
         tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
 
         sub_ = create_subscription<nav_msgs::msg::Odometry>(
@@ -33,6 +34,9 @@ public:
 private:
     void callback(const nav_msgs::msg::Odometry::SharedPtr msg)
     {
+        if (!publish_tf_) {         
+            return;
+        }
         tf2::Quaternion q_body;
         tf2::fromMsg(msg->pose.pose.orientation, q_body);
 
@@ -66,7 +70,8 @@ private:
         tf_broadcaster_->sendTransform(odom_to_footprint);
         tf_broadcaster_->sendTransform(footprint_to_base);
     }
-
+    
+    bool publish_tf_;
     std::string odom_topic_;
     std::string odom_frame_;
     std::string base_frame_;

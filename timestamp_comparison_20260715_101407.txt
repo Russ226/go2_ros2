@@ -1,0 +1,679 @@
+=== Wall clock at start: 1784124847.313724729 ===
+--- /utlidar/cloud header.stamp ---
+--- /utlidar/imu header.stamp ---
+[WARN] [1784124847.924809888] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/xfk_webrtcreq' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.924975700] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/xfk_webrtcres' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.926402513] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/pet/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.927552558] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/pet/flowfeedback' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.927601071] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.927674721] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.927851878] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.927877518] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gpt_cmd' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.927920348] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.927986488] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gesture/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.928020471] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/programming_actuator/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.928601791] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.928642443] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.928661071] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.928691963] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/uwbswitch/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.928716478] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/audiohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.928760553] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.928802997] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/battery_alarm' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.929086630] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.929115849] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.929189922] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.929239987] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/uwbswitch/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.929306754] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/audiohub/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.929356469] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/pet/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.929791625] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/client_command' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.929832858] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/cloud_map' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.929850302] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/server_log' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.929868499] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/audiohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.929892693] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/server_log' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.929920899] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/client_command' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.929951781] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.929988740] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/map_file_pub' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.930008176] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/client_command' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.930031861] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/server_log' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.930075150] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.930100160] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.930143055] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/map_file_sub' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.930904631] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.931091015] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/webrtcres' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.931525878] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/xfk_webrtcres' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.931587508] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uwbswitch' with type 'unitree_go::msg::dds_::UwbSwitch_' from USER_DATA '(null)'.
+[WARN] [1784124847.931902073] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/servicestateactivate' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.932071688] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/wirelesscontroller' with type 'unitree_go::msg::dds_::WirelessController_' from USER_DATA '(null)'.
+[WARN] [1784124847.932150446] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/wirelesscontroller_unprocessed' with type 'unitree_go::msg::dds_::WirelessController_' from USER_DATA '(null)'.
+[WARN] [1784124847.932179641] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/motion_switcher/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.932205303] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.932267559] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.932288622] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/switch' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.932339411] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/rtc_status' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.932356799] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/videohub/inner' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.932399949] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/rtc/state' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.932419001] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/rm_con/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.932451769] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.932472566] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/uwbswitch/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.932530808] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/programming_actuator/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.932620498] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/motion_switcher/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.932655180] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.932673906] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/wirelesscontroller' with type 'unitree_go::msg::dds_::WirelessController_' from USER_DATA '(null)'.
+[WARN] [1784124847.932691029] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.932712317] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.933513859] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/bashrunner/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.933636168] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.933807445] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.933857169] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gpt/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.933901151] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.934069197] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/robot_state/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.934133115] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/audiohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.934195345] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.934879090] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.935010370] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/config/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935034005] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/motion_switcher/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935077530] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gas_sensor/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935096375] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/fourg_agent/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935178622] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/programming_actuator/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935198653] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gpt/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.935346496] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gptflowfeedback' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.935366395] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/assistant_recorder/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935386085] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/pet/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935422262] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/qt_command' with type 'unitree_interfaces::msg::dds_::QtCommand_' from USER_DATA '(null)'.
+[WARN] [1784124847.935436324] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/qt_add_node' with type 'unitree_interfaces::msg::dds_::QtNode_' from USER_DATA '(null)'.
+[WARN] [1784124847.935447395] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/qt_add_edge' with type 'unitree_interfaces::msg::dds_::QtEdge_' from USER_DATA '(null)'.
+[WARN] [1784124847.935480560] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935491766] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/arm/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935503560] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935554667] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gpt_cmd' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.935576710] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/voice/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935615954] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/arm_Command' with type 'unitree_arm::msg::dds_::ArmString_' from USER_DATA '(null)'.
+[WARN] [1784124847.935630608] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gpt_state' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.935646601] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gesture/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935689616] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/slam_operate/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935715242] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/client_command' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.935763542] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/programming_actuator/command' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.935780969] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/public_network_status' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.935821577] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/fourg_agent/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.935835626] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/audiohub/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.935846472] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/audiohub/player/state' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.935875697] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935888440] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gnss' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.935900032] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lowcmd' with type 'unitree_go::msg::dds_::LowCmd_' from USER_DATA '(null)'.
+[WARN] [1784124847.935912028] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gpt/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.935950482] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.935967165] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/arm/action/state' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936001999] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.936013518] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/range_info' with type 'geometry_msgs::msg::dds_::PointStamped_' from USER_DATA '(null)'.
+[WARN] [1784124847.936024046] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.936035759] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/voice/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.936066873] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gesture/result' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936077450] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/slam_operate/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.936087021] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/slam_key_info' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936096513] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/slam_info' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936158536] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/audio_msg' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936176655] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/webrtcreq' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936225769] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/xfk_webrtcreq' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936253209] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/frontvideostream' with type 'unitree_go::msg::dds_::Go2FrontVideoData_' from USER_DATA '(null)'.
+[WARN] [1784124847.936300310] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/audiosender' with type 'unitree_go::msg::dds_::AudioData_' from USER_DATA '(null)'.
+[WARN] [1784124847.936316621] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/selftest' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936368854] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gptflowfeedback' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936392523] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/servicestate' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936454824] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/battery_alarm' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936516903] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/fourg_agent/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.936550621] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.936572383] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/audiohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.936590409] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/rtc/state' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.936641938] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.936690938] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.936739701] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/voxel_map_compressed' with type 'unitree_go::msg::dds_::VoxelMapCompressed_' from USER_DATA '(null)'.
+[WARN] [1784124847.936761413] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/robot_pose' with type 'geometry_msgs::msg::dds_::PoseStamped_' from USER_DATA '(null)'.
+[WARN] [1784124847.936810034] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/lidar_state' with type 'unitree_go::msg::dds_::LidarState_' from USER_DATA '(null)'.
+[WARN] [1784124847.936874833] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uwbstate' with type 'unitree_go::msg::dds_::UwbState_' from USER_DATA '(null)'.
+[WARN] [1784124847.938822687] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/multiplestate' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.938925924] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/audiohub/player/state' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.938944273] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/public_network_status' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.938959622] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/pet/flowfeedback' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.938976897] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.938996466] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/uwbswitch/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939016035] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/bashrunner/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939075908] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939092338] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/audioreceiver' with type 'unitree_go::msg::dds_::AudioData_' from USER_DATA '(null)'.
+[WARN] [1784124847.939206105] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939241581] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gpt/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939303810] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939439978] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/robot_state/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939471589] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/audiohub/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939492648] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/config/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939521581] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/motion_switcher/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939714236] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gas_sensor/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939753994] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/fourg_agent/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939776905] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/programming_actuator/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939798618] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/assistant_recorder/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939822484] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/pet/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.939845731] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/query_result_node' with type 'unitree_interfaces::msg::dds_::QtNode_' from USER_DATA '(null)'.
+[WARN] [1784124847.939866848] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/query_result_edge' with type 'unitree_interfaces::msg::dds_::QtEdge_' from USER_DATA '(null)'.
+[WARN] [1784124847.939885757] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/qt_notice' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.939905049] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/pctoimage_local' with type 'unitree_interfaces::msg::dds_::PcToImage_' from USER_DATA '(null)'.
+[WARN] [1784124847.939935395] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lio_sam_ros2/mapping/odometry' with type 'nav_msgs::msg::dds_::Odometry_' from USER_DATA '(null)'.
+[WARN] [1784124847.939958009] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/arm_Feedback' with type 'unitree_arm::msg::dds_::ArmString_' from USER_DATA '(null)'.
+[WARN] [1784124847.939976071] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gas_sensor' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.939995629] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/frontend/cloud_world_ds' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.940038864] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/frontend/odom' with type 'nav_msgs::msg::dds_::Odometry_' from USER_DATA '(null)'.
+[WARN] [1784124847.940060369] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/server_log' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.940081511] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/localization/odom' with type 'nav_msgs::msg::dds_::Odometry_' from USER_DATA '(null)'.
+[WARN] [1784124847.940120607] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/navigation/global_path' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.940143215] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uslam/localization/cloud_world' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.940162335] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/programming_actuator/feedback' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.940182321] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940203883] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940222521] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940243931] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940262433] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.940284748] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.940302613] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/height_map_array' with type 'unitree_go::msg::dds_::HeightMap_' from USER_DATA '(null)'.
+[WARN] [1784124847.940317036] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/wirelesscontroller' with type 'unitree_go::msg::dds_::WirelessController_' from USER_DATA '(null)'.
+[WARN] [1784124847.940332081] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940347646] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.940366908] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/motion_switcher/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940383931] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/config/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940402767] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/robot_state/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940419597] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/public_network_status' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.940435168] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/webrtcres' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.940454095] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940487661] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940506459] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/audiosender' with type 'unitree_go::msg::dds_::AudioData_' from USER_DATA '(null)'.
+[WARN] [1784124847.940523914] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940542907] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940560811] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940575529] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/wirelesscontroller_unprocessed' with type 'unitree_go::msg::dds_::WirelessController_' from USER_DATA '(null)'.
+[WARN] [1784124847.940592377] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940618754] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940635417] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/motion_switcher/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940650848] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/config_change_status' with type 'unitree_go::msg::dds_::ConfigChangeStatus_' from USER_DATA '(null)'.
+[WARN] [1784124847.940665306] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/config/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940680307] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/robot_state/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.940695754] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/servicestate' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.940714873] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/multiplestate' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.940729932] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/webrtcreq' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.940745683] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940762997] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940779653] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/uwbswitch/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.940797683] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/uwbswitch/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.941798499] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lowcmd' with type 'unitree_go::msg::dds_::LowCmd_' from USER_DATA '(null)'.
+[WARN] [1784124847.941847770] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.941866141] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.941894776] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/config/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.941914015] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/config/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.942034388] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport_lease/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.942077470] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.942097662] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/wirelesscontroller_unprocessed' with type 'unitree_go::msg::dds_::WirelessController_' from USER_DATA '(null)'.
+[WARN] [1784124847.942123600] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.942138992] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/height_map_array' with type 'unitree_go::msg::dds_::HeightMap_' from USER_DATA '(null)'.
+[WARN] [1784124847.942155546] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/config/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.942171832] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/config/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.942188139] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/config_change_status' with type 'unitree_go::msg::dds_::ConfigChangeStatus_' from USER_DATA '(null)'.
+[WARN] [1784124847.942207503] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport_lease/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.942226261] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.942711977] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/bashrunner/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.942771646] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/selftest' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.942790023] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/assistant_recorder/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.944154640] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.944206684] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/battery_alarm' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.944228566] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/bashrunner/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.944249365] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/assistant_recorder/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.944267320] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.944280872] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lowstate' with type 'unitree_go::msg::dds_::LowState_' from USER_DATA '(null)'.
+[WARN] [1784124847.945968979] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/frontvideostream' with type 'unitree_go::msg::dds_::Go2FrontVideoData_' from USER_DATA '(null)'.
+[WARN] [1784124847.946027502] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.946057187] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.946077606] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/videohub/inner' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.946528332] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.946595023] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.946630752] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/range_info' with type 'geometry_msgs::msg::dds_::PointStamped_' from USER_DATA '(null)'.
+[WARN] [1784124847.946659426] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.946683909] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/vui/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.946699333] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/wirelesscontroller' with type 'unitree_go::msg::dds_::WirelessController_' from USER_DATA '(null)'.
+[WARN] [1784124847.946763955] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gesture/result' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.952167526] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/server_log' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.952337637] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/cloud' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.952403020] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/lidar_state' with type 'unitree_go::msg::dds_::LidarState_' from USER_DATA '(null)'.
+[WARN] [1784124847.952790242] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/imu' with type 'sensor_msgs::msg::dds_::Imu_' from USER_DATA '(null)'.
+[WARN] [1784124847.952830235] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/cloud_deskewed' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.952850538] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/cloud_base' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.952871343] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/robot_odom' with type 'nav_msgs::msg::dds_::Odometry_' from USER_DATA '(null)'.
+[WARN] [1784124847.952892694] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/robot_pose' with type 'geometry_msgs::msg::dds_::PoseStamped_' from USER_DATA '(null)'.
+[WARN] [1784124847.952916836] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/mapping_cmd' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.952936120] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/client_command' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.952952947] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/switch' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.952970270] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/cloud' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.952989123] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.954055188] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/gesture/result' with type 'std_msgs::msg::dds_::String_' from USER_DATA '(null)'.
+[WARN] [1784124847.954139836] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.954165266] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/gesture/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.954183093] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/videohub/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.954224720] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.959108798] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/voxel_map' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.959206859] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/voxel_map_compressed' with type 'unitree_go::msg::dds_::VoxelMapCompressed_' from USER_DATA '(null)'.
+[WARN] [1784124847.959340007] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/height_map' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.959424678] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/range_map' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.959441280] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/range_info' with type 'geometry_msgs::msg::dds_::PointStamped_' from USER_DATA '(null)'.
+[WARN] [1784124847.959620474] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/height_map_array' with type 'unitree_go::msg::dds_::HeightMap_' from USER_DATA '(null)'.
+[WARN] [1784124847.959639365] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/grid_map' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.959658461] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/robot_pose' with type 'geometry_msgs::msg::dds_::PoseStamped_' from USER_DATA '(null)'.
+[WARN] [1784124847.959681022] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/utlidar/cloud_deskewed' with type 'sensor_msgs::msg::dds_::PointCloud2_' from USER_DATA '(null)'.
+[WARN] [1784124847.959699547] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+[WARN] [1784124847.971254591] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/uwbswitch/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.971335188] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.971549556] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.971575331] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/uwbstate' with type 'unitree_go::msg::dds_::UwbState_' from USER_DATA '(null)'.
+[WARN] [1784124847.971780651] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/uwbswitch/request' with type 'unitree_api::msg::dds_::Request_' from USER_DATA '(null)'.
+[WARN] [1784124847.971830107] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/sport/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.971936291] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/api/obstacles_avoid/response' with type 'unitree_api::msg::dds_::Response_' from USER_DATA '(null)'.
+[WARN] [1784124847.972239227] [rmw_cyclonedds_cpp]: Failed to parse type hash for topic 'rt/lf/sportmodestate' with type 'unitree_go::msg::dds_::SportModeState_' from USER_DATA '(null)'.
+sec: 1784124848
+nanosec: 538427829
+---
+sec: 1784124848
+nanosec: 603940963
+---
+sec: 1784124848
+nanosec: 668417692
+---
+sec: 1784124848
+nanosec: 735555410
+---
+sec: 1784124848
+nanosec: 797914266
+---
+sec: 1784124848
+nanosec: 866813898
+---
+sec: 1784124848
+nanosec: 927928686
+---
+sec: 1784124848
+nanosec: 992908477
+---
+sec: 1784124849
+nanosec: 57404041
+---
+sec: 1784124849
+nanosec: 122436046
+---
+sec: 1784124849
+nanosec: 187436342
+---
+sec: 1784124849
+nanosec: 252453565
+---
+sec: 1784124849
+nanosec: 317455053
+---
+sec: 1784124849
+nanosec: 385925531
+---
+sec: 1784124849
+nanosec: 447418451
+---
+sec: 1784124849
+nanosec: 511940479
+---
+sec: 1784124849
+nanosec: 580917835
+---
+sec: 1784124849
+nanosec: 643916368
+---
+sec: 1784124849
+nanosec: 707969427
+---
+sec: 1784124849
+nanosec: 771421670
+---
+sec: 1784124849
+nanosec: 838442325
+---
+sec: 1784124849
+nanosec: 905414581
+---
+sec: 1784124849
+nanosec: 965954303
+---
+sec: 1784124850
+nanosec: 32417774
+---
+sec: 1784124850
+nanosec: 95930337
+---
+sec: 1784124850
+nanosec: 161429405
+---
+sec: 1784124850
+nanosec: 225417852
+---
+sec: 1784124850
+nanosec: 293933629
+---
+sec: 1784124850
+nanosec: 355522394
+---
+sec: 1784124850
+nanosec: 420927762
+---
+sec: 1784124850
+nanosec: 485481977
+---
+sec: 1784124850
+nanosec: 550425529
+---
+sec: 1784124850
+nanosec: 614941835
+---
+sec: 1784124850
+nanosec: 680460214
+---
+sec: 1784124850
+nanosec: 744914531
+---
+sec: 1784124850
+nanosec: 809931278
+---
+sec: 1784124850
+nanosec: 877076864
+---
+sec: 1784124850
+nanosec: 939920663
+---
+sec: 1784124851
+nanosec: 4923105
+---
+sec: 1784124851
+nanosec: 70071697
+---
+sec: 1784124851
+nanosec: 138425588
+---
+sec: 1784124851
+nanosec: 199940919
+---
+sec: 1784124851
+nanosec: 267935276
+---
+sec: 1784124851
+nanosec: 331955432
+---
+sec: 1784124851
+nanosec: 394433975
+---
+sec: 1784124851
+nanosec: 458913564
+---
+sec: 1784124851
+nanosec: 523934125
+---
+sec: 1784124851
+nanosec: 592758655
+---
+sec: 1784124851
+nanosec: 653409242
+---
+sec: 1784124851
+nanosec: 720075368
+---
+sec: 1784124851
+nanosec: 786698818
+---
+sec: 1784124851
+nanosec: 854934692
+---
+sec: 1784124851
+nanosec: 917943239
+---
+sec: 1784124851
+nanosec: 984014987
+---
+sec: 1784124852
+nanosec: 50490140
+---
+sec: 1784124852
+nanosec: 115425348
+---
+sec: 1784124852
+nanosec: 183133125
+---
+sec: 1784124852
+nanosec: 242423534
+---
+sec: 1784124852
+nanosec: 307942628
+---
+sec: 1784124852
+nanosec: 372445344
+---
+sec: 1784124852
+nanosec: 437436580
+---
+sec: 1784124852
+nanosec: 501915693
+---
+sec: 1784124852
+nanosec: 567795038
+---
+sec: 1784124852
+nanosec: 632435321
+---
+sec: 1784124852
+nanosec: 696940898
+---
+sec: 1784124852
+nanosec: 761944532
+---
+sec: 1784124852
+nanosec: 827033996
+---
+sec: 1784124852
+nanosec: 895594358
+---
+sec: 1784124852
+nanosec: 956946134
+---
+sec: 1784124853
+nanosec: 26432275
+---
+sec: 1784124853
+nanosec: 86405038
+---
+sec: 1784124853
+nanosec: 151502132
+---
+sec: 1784124853
+nanosec: 216420888
+---
+sec: 1784124853
+nanosec: 281432867
+---
+sec: 1784124853
+nanosec: 349945545
+---
+sec: 1784124853
+nanosec: 410922527
+---
+sec: 1784124853
+nanosec: 475586891
+---
+sec: 1784124853
+nanosec: 540925264
+---
+sec: 1784124853
+nanosec: 605924129
+---
+sec: 1784124853
+nanosec: 671422481
+---
+sec: 1784124853
+nanosec: 738128423
+---
+sec: 1784124853
+nanosec: 801000118
+---
+sec: 1784124853
+nanosec: 865418672
+---
+sec: 1784124853
+nanosec: 930512666
+---
+sec: 1784124853
+nanosec: 995420217
+---
+sec: 1784124854
+nanosec: 60417413
+---
+sec: 1784124854
+nanosec: 126425743
+---
+sec: 1784124854
+nanosec: 189949750
+---
+sec: 1784124854
+nanosec: 254930734
+---
+sec: 1784124854
+nanosec: 319408893
+---
+sec: 1784124854
+nanosec: 385467290
+---
+sec: 1784124854
+nanosec: 450960636
+---
+sec: 1784124854
+nanosec: 514927387
+---
+sec: 1784124854
+nanosec: 579548597
+---
+sec: 1784124854
+nanosec: 643926143
+---
+sec: 1784124854
+nanosec: 710351228
+---
+sec: 1784124854
+nanosec: 776468276
+---
+sec: 1784124854
+nanosec: 839448451
+---
+sec: 1784124854
+nanosec: 907211780
+---
+sec: 1784124854
+nanosec: 968981981
+---
+sec: 1784124855
+nanosec: 34914731
+---
+sec: 1784124855
+nanosec: 100448608
+---
+sec: 1784124855
+nanosec: 163447380
+---
+sec: 1784124855
+nanosec: 228414773
+---
+sec: 1784124855
+nanosec: 293400049
+---
+sec: 1784124855
+nanosec: 357956886
+---
+sec: 1784124855
+nanosec: 423416376
+---
+sec: 1784124855
+nanosec: 487936258
+---
+sec: 1784124855
+nanosec: 553003311
+---
+sec: 1784124855
+nanosec: 617570400
+---
+sec: 1784124855
+nanosec: 682960748
+---
+sec: 1784124855
+nanosec: 747414112
+---
+sec: 1784124855
+nanosec: 812438964
+---
+sec: 1784124855
+nanosec: 877410173
+---
+sec: 1784124855
+nanosec: 941932678
+---
+sec: 1784124856
+nanosec: 7839441
+---
+sec: 1784124856
+nanosec: 71916580
+---
+sec: 1784124856
+nanosec: 137418746
+---
+sec: 1784124856
+nanosec: 202416896
+---
+sec: 1784124856
+nanosec: 269939184
+---
+sec: 1784124856
+nanosec: 335946798
+---
+sec: 1784124856
+nanosec: 401909112
+---
+sec: 1784124856
+nanosec: 461422443
+---
+sec: 1784124856
+nanosec: 526416778
+---
+sec: 1784124856
+nanosec: 597462654
+---
+sec: 1784124856
+nanosec: 656105995
+---
+sec: 1784124856
+nanosec: 721404314
+---
+sec: 1784124856
+nanosec: 788933277
+---
+sec: 1784124856
+nanosec: 851430654
+---
+sec: 1784124856
+nanosec: 918693065
+---
+sec: 1784124856
+nanosec: 987956762
+---
+sec: 1784124857
+nanosec: 49920797
+---
+sec: 1784124857
+nanosec: 111516475
+---
+sec: 1784124857
+nanosec: 175414085
+---
+sec: 1784124857
+nanosec: 240957498
+---
+=== Wall clock at end: 1784124857.640817133 ===
