@@ -5,7 +5,8 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_directory
 from launch_ros.actions import Node
 from launch.actions import SetEnvironmentVariable
-
+from launch.substitutions import Command
+from launch_ros.parameter_descriptions import ParameterValue
 
 def generate_launch_description():
     mola_launch_dir = get_package_share_directory('mola_lidar_odometry')
@@ -18,46 +19,82 @@ def generate_launch_description():
         smoother_dir, 'params', 'state-estimation-smoother.yaml'
     )
 
-    SetEnvironmentVariable('MOLA_NAVSTATE_SIGMA_RANDOM_WALK_LINACC', '0.1')
-    SetEnvironmentVariable('MOLA_NAVSTATE_SIGMA_RANDOM_WALK_ANGACC', '0.1')
-    SetEnvironmentVariable('MOLA_IMU_GRAVITY_ALIGNMENT_SIGMA', '0.1')
+    rviz_config_path = os.path.join(get_package_share_directory('man_mapping'), 'rviz', 'go2_slam.rviz')
+
+    man_mapping_share = get_package_share_directory('man_mapping')
+
+    rviz_config_path = os.path.join(man_mapping_share, 'rviz', 'go2_slam.rviz')
+
+    go2_urdf_path = os.path.join(man_mapping_share, 'urdf', 'go2_description.urdf')
+
+    robot_description = ParameterValue(Command(['cat ', go2_urdf_path]), value_type=str)
+
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        arguments=['-d', rviz_config_path], # Sets the config file
+        output='screen'
+    )
+    
 
     mola_lio = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(mola_launch_file),
-        launch_arguments={
-            'lidar_topic_name': '/utlidar/cloud_deskewed',
-            'mola_tf_base_link': 'base_link',
-            'lidar_qos_reliability': 'best_effort',
-            'lidar_qos_depth': '200',
-            'min_nearby_poses_occupied': '3',
-            'odom_topic_name': '/utlidar/robot_odom',
-            'odom_sensor_label': 'go2_wheel_odom',
-            'publish_localization_following_rep105': 'False',
-            'imu_topic_name': '/utlidar/imu',
-            'use_imu_for_lio': 'True',
-            'imu_gravity_correction': 'True',
-            'imu_gravity_sigma_deg': '2.0',
-            'use_state_estimator': 'True',
-            'state_estimator_config_yaml': smoother_yaml,
-            'navstate_sliding_window_sec': '2.0',
-            'navstate_kinematic_model': 'KinematicModel::ConstantVelocity',
-            'forward_ros_tf_odom_to_mola': 'False',
-        }.items()
-    )
+    PythonLaunchDescriptionSource(mola_launch_file),
+    launch_arguments={
+        'use_rviz': "False",
+        'lidar_topic_name': '/utlidar/cloud',
+        'mola_tf_base_link': 'base_link',
+        'lidar_qos_reliability': 'best_effort',
+        'lidar_qos_depth': '100',
+        'min_nearby_poses_occupied': '2',
+        'odom_topic_name': '/utlidar/robot_odom',
+        'odom_sensor_label': 'go2_wheel_odom',
+        'publish_localization_following_rep105': 'False',
+        'imu_topic_name': '/utlidar/imu_fixed',
+        'use_imu_for_lio': 'True',
+        'imu_gravity_correction': 'True',
+        'imu_gravity_sigma_deg': '1.0',
+        'initial_localization_method': 'InitLocalization::FixedPose',
+        'mola_deskew_method': 'MotionCompensationMethod::IMU',
+        'forward_ros_tf_odom_to_mola': 'False',
+        'start_mapping_enabled': 'True',
+    }.items()
+)
     return LaunchDescription([
-        mola_lio,
-
+        # Node(
+        #     package='joint_state_publisher',
+        #     executable='joint_state_publisher',
+        #     name='joint_state_publisher',
+        #     output='screen',
+        # ),
         Node(
-            package='man_mapping',
-            executable='laser_static_tf_publisher',
-            name='laser_static_tf_publisher',
+            package='robot_state_publisher',
+            executable='robot_state_publisher',
+            name='robot_state_publisher',
             output='screen',
             parameters=[{
-                'parent_frame': 'base_link',
-                'child_frame': 'utlidar_lidar',
-                'x': 0.0, 'y': 0.0, 'z': 0.12,
-                'roll': 0.0002, 'pitch': 0.3462, 'yaw': 0.0,
-            }]
+                'robot_description': robot_description,
+                'publish_frequency': 50.0,
+            }],
+            remappings=[
+                ('joint_states', '/joint_states'),
+            ],
+        ),
+        rviz_node,
+       Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='base_to_utlidar_lidar',
+            arguments=[
+                '--x', '0.0',        
+                '--y', '0.0',
+                '--z', '0.2',
+                '--roll', '3.14',
+                '--pitch', '0.0',
+                '--yaw', '0.0',
+                '--frame-id', 'base_link',
+                '--child-frame-id', 'utlidar_lidar',
+            ],
         ),
 
         Node(
@@ -68,54 +105,67 @@ def generate_launch_description():
             parameters=[{
                 'parent_frame': 'base_link',
                 'child_frame': 'utlidar_imu',
-                'x': 0.0, 'y': 0.0, 'z': 0.12,
-                'roll': 0.0, 'pitch': 0.0, 'yaw': 0.0,
+                'x': 0.0, 'y': 0.0, 'z': 0.0,
+                'roll': 0.0, 'pitch': 0.0, 'yaw': 0.0
             }]
         ),
-
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='base_link_to_go2_urdf',
+            arguments=[
+                '--x', '0.0',
+                '--y', '0.0',
+                '--z', '0.0',
+                '--roll', '0.0',
+                '--pitch', '0.0',
+                '--yaw', '0.0',
+                '--frame-id', 'base_link',
+                '--child-frame-id', 'base',
+            ],
+        ),
         Node(
             package='man_mapping',
-            executable='odom_tf_broadcaster',
-            name='odom_footprint_tf_broadcaster',
+            executable='imu_quaternion_normalizer',
+            name='imu_quaternion_normalizer',
             output='screen',
             parameters=[{
-                'odom_topic': '/utlidar/robot_odom',
-                'odom_frame': 'odom',
-                'base_footprint': 'base_footprint',
-                'base_frame': 'base_link',
-                'publish_tf': True, 
-            }]
+                'input_topic': '/utlidar/imu',
+                'output_topic': '/utlidar/imu_fixed',
+                'drop_invalid': True,
+            }],
         ),
-
         # Node(
-        #     package='robot_localization',
-        #     executable='ekf_node',
-        #     name='ekf_filter_node',
+        #     package='man_mapping',
+        #     executable='odom_conditioner',
+        #     name='odom_conditioner',
         #     output='screen',
         #     parameters=[{
-        #         'frequency': 50.0,
-        #         'sensor_timeout': 0.2,
-        #         'two_d_mode': False,
-        #         'publish_tf': True,
-        #         'map_frame': 'map',
-        #         'odom_frame': 'odom',
-        #         'base_link_frame': 'base_link',
-        #         'world_frame': 'odom',
-
-        #         'odom0': '/utlidar/robot_odom',
-        #         'odom0_config': [False, False, False,
-        #                           False, False, False,
-        #                           True,  True,  False,
-        #                           False, False, True,
-        #                           False, False, False],
-        #         'odom0_differential': False,
-        #         'odom1': '/lidar_odometry/pose',
-        #         'odom1_config': [True,  True,  True,
-        #                           True,  True,  True,
-        #                           False, False, False,
-        #                           False, False, False,
-        #                           False, False, False],
-        #         'odom1_differential': False,
+        #         'input_topic': '/utlidar/robot_odom',
+        #         'output_topic': '/utlidar/robot_odom_fixed',
+        #         'frame_id': 'odom',
+        #         'child_frame_id': 'base_link',
+        #         'drop_non_monotonic_timestamps': True,
+        #         'pose_cov_diag': [1.0, 1.0, 4.0, 1.0, 1.0, 0.5],
+        #         'twist_cov_diag': [0.8, 0.8, 3.0, 4.0, 4.0, 2.0],
         #     }],
-        # )
+        # ),
+
+        # Node(
+        #     package='man_mapping',
+        #     executable='virtual_odom_publisher',
+        #     name='virtual_odom_publisher',
+        #     output='screen',
+        #     parameters=[{
+        #         'odom_topic': '/utlidar/robot_odom',
+        #         'odom_frame': 'odom',
+        #         'base_frame': 'base_link',
+
+        #         'enable_stationary_freeze': False,
+        #         'linear_stationary_threshold': 0.30,
+        #         'angular_stationary_threshold': 0.30,
+        #         'stationary_hold_sec': 1.0,
+        #     }],
+        # ),
+        mola_lio
     ])
