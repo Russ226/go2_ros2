@@ -1,12 +1,10 @@
-#include <algorithm>
 #include <cmath>
-#include <memory>
-#include <string>
-
-#include <geometry_msgs/msg/transform_stamped.hpp>
-#include <nav_msgs/msg/odometry.hpp>
 #include <rclcpp/rclcpp.hpp>
+#include <nav_msgs/msg/odometry.hpp>
 #include <tf2_ros/transform_broadcaster.h>
+#include <geometry_msgs/msg/transform_stamped.hpp>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 class VirtualOdomPublisher : public rclcpp::Node
 {
@@ -14,157 +12,105 @@ public:
     VirtualOdomPublisher()
         : Node("virtual_odom_publisher")
     {
-        odom_topic_ = declare_parameter<std::string>(
-            "odom_topic", "/utlidar/robot_odom_fixed");
-
-        odom_frame_ = declare_parameter<std::string>("odom_frame", "odom");
-        base_frame_ = declare_parameter<std::string>("base_frame", "base_link");
-
-        linear_stationary_threshold_ = declare_parameter<double>(
-            "linear_stationary_threshold", 0.025);
-
-        angular_stationary_threshold_ = declare_parameter<double>(
-            "angular_stationary_threshold", 0.04);
-
-        stationary_hold_sec_ = declare_parameter<double>(
-            "stationary_hold_sec", 0.75);
-
-        enable_stationary_freeze_ = declare_parameter<bool>(
-            "enable_stationary_freeze", true);
-
-        broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
-
-        const auto qos = rclcpp::QoS(rclcpp::KeepLast(20)).best_effort();
+        broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(this);
+        geometry_msgs::msg::TransformStamped tf;
+        tf.header.stamp = this->now();
+        tf.header.frame_id = "odom";
+        tf.child_frame_id = "base_link";
+        tf.transform.translation.x = 0.0;
+        tf.transform.translation.y = 0.0;
+        tf.transform.translation.z = 0.0;
+        tf.transform.rotation.w = 1.0;
+        broadcaster_->sendTransform(tf);
 
         odom_sub_ = create_subscription<nav_msgs::msg::Odometry>(
-            odom_topic_,
-            qos,
-            std::bind(
-                &VirtualOdomPublisher::onOdom,
-                this,
-                std::placeholders::_1));
+            "/utlidar/robot_odom",
+            rclcpp::QoS(rclcpp::KeepLast(20)).best_effort(),
+            std::bind(&VirtualOdomPublisher::onWheelOdom, this, std::placeholders::_1));
 
-        RCLCPP_INFO(
-            get_logger(),
-            "Listening on '%s', publishing %s -> %s, stationary freeze: %s",
-            odom_topic_.c_str(),
-            odom_frame_.c_str(),
-            base_frame_.c_str(),
-            enable_stationary_freeze_ ? "enabled" : "disabled");
+        last_move_time_ = this->now();
     }
 
 private:
-    void onOdom(const nav_msgs::msg::Odometry::SharedPtr msg)
+    void onWheelOdom(const nav_msgs::msg::Odometry::SharedPtr msg)
     {
-        geometry_msgs::msg::TransformStamped measured_tf;
-        measured_tf.header.stamp = msg->header.stamp;
-        measured_tf.header.frame_id = odom_frame_;
-        measured_tf.child_frame_id = base_frame_;
+        const auto &p = msg->pose.pose.position;
+        const auto &q = msg->pose.pose.orientation;
 
-        measured_tf.transform.translation.x = msg->pose.pose.position.x;
-        measured_tf.transform.translation.y = msg->pose.pose.position.y;
-        measured_tf.transform.translation.z = msg->pose.pose.position.z;
-        measured_tf.transform.rotation = msg->pose.pose.orientation;
-
-        const double q_norm_sq =
-            measured_tf.transform.rotation.x * measured_tf.transform.rotation.x +
-            measured_tf.transform.rotation.y * measured_tf.transform.rotation.y +
-            measured_tf.transform.rotation.z * measured_tf.transform.rotation.z +
-            measured_tf.transform.rotation.w * measured_tf.transform.rotation.w;
-
-        if (q_norm_sq < 1e-8)
+        const double qn2 = q.x * q.x + q.y * q.y + q.z * q.z + q.w * q.w;
+        if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.z) ||
+            !std::isfinite(q.x) || !std::isfinite(q.y) ||
+            !std::isfinite(q.z) || !std::isfinite(q.w) || qn2 < 1e-12)
         {
-            RCLCPP_WARN_THROTTLE(
-                get_logger(), *get_clock(), 2000,
-                "Ignoring odometry with invalid zero quaternion");
             return;
         }
 
-        const double inv_q_norm = 1.0 / std::sqrt(q_norm_sq);
-        measured_tf.transform.rotation.x *= inv_q_norm;
-        measured_tf.transform.rotation.y *= inv_q_norm;
-        measured_tf.transform.rotation.z *= inv_q_norm;
-        measured_tf.transform.rotation.w *= inv_q_norm;
+        // Position-based zero-velocity detection
+        const double dx = p.x - last_pose_.position.x;
+        const double dy = p.y - last_pose_.position.y;
+        const double dz = p.z - last_pose_.position.z;
+        const double dist = std::sqrt(dx*dx + dy*dy + dz*dz);
 
-        const auto &twist = msg->twist.twist;
-
-        const double planar_speed = std::hypot(twist.linear.x, twist.linear.y);
-
-        const double yaw_rate = std::abs(twist.angular.z);
-
-        const bool reported_stationary =
-            planar_speed < linear_stationary_threshold_ &&
-            yaw_rate < angular_stationary_threshold_;
-
-        const rclcpp::Time stamp(msg->header.stamp);
-
-        if (!reported_stationary)
+        if (dist > POS_THRESH_)
         {
-            stationary_since_.reset();
+            // Moving: update last-move time, release freeze
+            last_move_time_ = msg->header.stamp;
             frozen_ = false;
-            last_live_tf_ = measured_tf;
-            have_last_live_tf_ = true;
-            broadcaster_->sendTransform(measured_tf);
-            return;
         }
 
-        if (!have_last_live_tf_)
+        if (!frozen_)
         {
-            last_live_tf_ = measured_tf;
-            have_last_live_tf_ = true;
+            // Cache current pose as the "frozen" reference
+            frozen_pose_ = msg->pose.pose;
         }
 
-        if (!stationary_since_)
+        const double time_since_move = (this->now() - last_move_time_).seconds();
+        if (time_since_move > TIME_THRESH_ && !frozen_)
         {
-            stationary_since_ = stamp;
+            // Just transitioned to stationary: lock the pose
+            frozen_ = true;
+            RCLCPP_INFO(get_logger(), "Stationary detected: freezing odom->base_link");
         }
 
-        const double stationary_duration =
-            (stamp - *stationary_since_).seconds();
+        geometry_msgs::msg::TransformStamped tf;
+        tf.header.stamp = msg->header.stamp;
+        tf.header.frame_id = msg->header.frame_id; // odom
+        tf.child_frame_id = msg->child_frame_id;   // base_link
 
-        if (enable_stationary_freeze_ &&
-            stationary_duration >= stationary_hold_sec_)
+        if (frozen_)
         {
-            if (!frozen_)
-            {
-                frozen_tf_ = last_live_tf_;
-                frozen_ = true;
+            // Publish frozen pose
+            tf.transform.translation.x = frozen_pose_.position.x;
+            tf.transform.translation.y = frozen_pose_.position.y;
+            tf.transform.translation.z = frozen_pose_.position.z;
+            tf.transform.rotation = frozen_pose_.orientation;
+        }
+        else
+        {
+            // Moving: normalize and forward
+            tf2::Quaternion q_tf(q.x, q.y, q.z, q.w);
+            q_tf.normalize();
 
-                RCLCPP_INFO(
-                    get_logger(),
-                    "Stationary for %.2f s; freezing odom -> base_link",
-                    stationary_duration);
-            }
-
-            auto tf = frozen_tf_;
-            tf.header.stamp = msg->header.stamp;
-            broadcaster_->sendTransform(tf);
-            return;
+            tf.transform.translation.x = p.x;
+            tf.transform.translation.y = p.y;
+            tf.transform.translation.z = p.z;
+            tf.transform.rotation = tf2::toMsg(q_tf);
         }
 
-        last_live_tf_ = measured_tf;
-        broadcaster_->sendTransform(measured_tf);
+        last_pose_ = msg->pose.pose;
+        broadcaster_->sendTransform(tf);
     }
 
-    std::string odom_topic_;
-    std::string odom_frame_;
-    std::string base_frame_;
+    geometry_msgs::msg::Pose last_pose_;
+    geometry_msgs::msg::Pose frozen_pose_;
+    rclcpp::Time last_move_time_{0, 0, RCL_ROS_TIME};
+    bool frozen_ = false;
 
-    double linear_stationary_threshold_{0.025};
-    double angular_stationary_threshold_{0.04};
-    double stationary_hold_sec_{0.75};
-    bool enable_stationary_freeze_{true};
+    static constexpr double POS_THRESH_ = 0.02;  // 2 cm
+    static constexpr double TIME_THRESH_ = 0.5;    // 0.5 seconds
 
-    std::unique_ptr<tf2_ros::TransformBroadcaster> broadcaster_;
+    std::shared_ptr<tf2_ros::TransformBroadcaster> broadcaster_;
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_sub_;
-
-    bool have_last_live_tf_{false};
-    bool frozen_{false};
-
-    geometry_msgs::msg::TransformStamped last_live_tf_;
-    geometry_msgs::msg::TransformStamped frozen_tf_;
-
-    std::optional<rclcpp::Time> stationary_since_;
 };
 
 int main(int argc, char **argv)

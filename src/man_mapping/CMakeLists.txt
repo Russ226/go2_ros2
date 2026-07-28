@@ -15,6 +15,11 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
+find_package(unitree_go REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(orocos_kdl REQUIRED)
+find_package(kdl_parser REQUIRED)
+find_package(urdf REQUIRED)
 
 
 add_executable(cloud_to_scan src/PointToCloud.cpp)
@@ -27,13 +32,13 @@ add_executable(laser_static_tf_publisher src/LaserStaticTfPublisher.cpp)
 ament_target_dependencies(laser_static_tf_publisher rclcpp geometry_msgs tf2 tf2_ros)
 
 add_executable(map_pose_tf_broadcaster src/map_pose_tf_broadcaster.cpp)
-ament_target_dependencies(map_pose_tf_broadcaster rclcpp geometry_msgs tf2_ros tf2)
+ament_target_dependencies(map_pose_tf_broadcaster rclcpp geometry_msgs tf2_ros tf2 nav_msgs)
 
 add_executable(gyro_bias_corrector src/gyro_bias_corrector.cpp)
 ament_target_dependencies(gyro_bias_corrector rclcpp sensor_msgs nav_msgs)
 
 add_executable(virtual_odom_publisher src/virtual_odom_publisher.cpp)
-ament_target_dependencies(virtual_odom_publisher rclcpp nav_msgs tf2 tf2_ros tf2_geometry_msgs)
+ament_target_dependencies(virtual_odom_publisher rclcpp nav_msgs tf2_ros geometry_msgs tf2 tf2_geometry_msgs sensor_msgs)
 
 add_executable(odom_covariance_fixer src/odom_covariance_fixer.cpp)
 ament_target_dependencies(odom_covariance_fixer rclcpp nav_msgs)
@@ -50,6 +55,21 @@ ament_target_dependencies(odom_conditioner rclcpp nav_msgs)
 add_executable(pointcloud_rotator src/pointcloud_rotator.cpp)
 ament_target_dependencies(pointcloud_rotator rclcpp sensor_msgs)
 
+add_executable(go2_joint_state_bridge src/go2_joint_state_bridge.cpp)
+ament_target_dependencies( go2_joint_state_bridge rclcpp sensor_msgs unitree_go)
+
+add_executable(imu_bias_corrector src/imu_bias_corrector.cpp)
+ament_target_dependencies(imu_bias_corrector rclcpp sensor_msgs)
+
+add_executable(odom_fixed_publisher src/odom_fixed_publisher.cpp)
+ament_target_dependencies(odom_fixed_publisher rclcpp nav_msgs tf2_ros geometry_msgs tf2 tf2_geometry_msgs sensor_msgs)
+
+add_executable(go2_lowstate_bridge src/go2_lowstate_bridge.cpp)
+ament_target_dependencies(go2_lowstate_bridge nav_msgs rclcpp sensor_msgs unitree_go std_msgs)
+
+add_executable(go2_leg_odometry src/go2_leg_odometry.cpp)
+ament_target_dependencies(go2_leg_odometry rclcpp sensor_msgs std_msgs nav_msgs orocos_kdl kdl_parser urdf)
+
 install(DIRECTORY
   launch
   meshes
@@ -61,6 +81,8 @@ install(DIRECTORY
 )
 
 install(TARGETS
+  imu_bias_corrector
+  go2_joint_state_bridge
   cloud_to_scan
   odom_tf_broadcaster
   laser_static_tf_publisher
@@ -72,6 +94,8 @@ install(TARGETS
   mola_pose_tf_broadcaster
   odom_conditioner
   pointcloud_rotator
+  go2_lowstate_bridge
+  go2_leg_odometry
   DESTINATION lib/${PROJECT_NAME}
 )
 if(BUILD_TESTING)
