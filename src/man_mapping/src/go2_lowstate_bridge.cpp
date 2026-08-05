@@ -88,7 +88,7 @@ public:
         "FL_hip_joint", "FL_thigh_joint", "FL_calf_joint",
         "RR_hip_joint", "RR_thigh_joint", "RR_calf_joint",
         "RL_hip_joint", "RL_thigh_joint", "RL_calf_joint"};
-
+      
     imu_pub_ = create_publisher<sensor_msgs::msg::Imu>(imu_topic_, 50);
     joint_state_pub_ = create_publisher<sensor_msgs::msg::JointState>(joint_state_topic_, 50);
     foot_contact_pub_ = create_publisher<std_msgs::msg::Int32MultiArray>(foot_contact_topic_, 50);
@@ -225,7 +225,6 @@ private:
       contacts.data[i] = static_cast<double>(msg.foot_force[i]) > foot_force_threshold_ ? 1 : 0;
     }
 
-    foot_contact_pub_->publish(contacts);
 
     if (publish_raw_foot_force_ && foot_force_pub_)
     {

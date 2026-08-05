@@ -2,34 +2,46 @@ ekf_filter_node:
   ros__parameters:
     frequency: 50.0
     sensor_timeout: 0.1
-    two_d_mode: false
+    two_d_mode: true
     publish_tf: true
-    map_frame: map
+    # map_frame: map
     odom_frame: odom
     base_link_frame: base_link
     world_frame: odom
 
-    odom0: /odometry/leg
+    odom0: /utlidar/robot_odom_fixed
     odom0_config: [
-      true,  true,  true,
-      false, false, false,
-      true,  true,  true,
-      false, false, false,
-      false, false, false
+      true,  true,  false,  # x, y
+      false, false, false,  # roll, pitch, yaw
+      true,  true,  false,  # vx, vy
+      false, false, true,  # vroll, vpitch, vyaw
+      false, false, false   # ax, ay, az
     ]
     odom0_differential: false
     odom0_relative: false
-    odom0_queue_size: 10
+    odom0_queue_size: 20
 
-    imu0: /imu/data
+    # odom1: /utlidar/robot_odom_fixed
+    # odom1_config: [
+    #   true,  true,  true,
+    #   false, false, false,
+    #   true,  true,  true,
+    #   false, false, false,
+    #   false, false, false
+    # ]
+    # odom1_differential: false
+    # odom1_relative: false
+    # odom1_queue_size: 10
+
+    imu0: /utlidar/imu
     imu0_config: [
-      false, false, false,
-      true,  true,  true,
-      false, false, false,
-      true,  true,  true,
-      true,  true,  true
+      false, false, false,  # x, y, z 
+      true,  true,  false, # roll, pitch, yaw rates
+      false, false, false, # vx, vy, vz
+      false,  false,  false, # vroll, vpitch, vyaw
+      false,  false,  false # ax, ay, az
     ]
     imu0_differential: false
     imu0_relative: false
     imu0_queue_size: 50
-    imu0_remove_gravitational_acceleration: false
+    imu0_remove_gravitational_acceleration: true

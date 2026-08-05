@@ -88,8 +88,8 @@ public:
                 throw std::runtime_error("Foot frame not found in Pinocchio model: " + foot_links_[i]);
             }
             foot_frame_ids_.push_back(frame_id);
-            RCLCPP_INFO(get_logger(), "Foot frame %zu: %s -> id=%u",
-                        i, foot_links_[i].c_str(), static_cast<unsigned int>(frame_id));
+            // RCLCPP_INFO(get_logger(), "Foot frame %zu: %s -> id=%u",
+            //             i, foot_links_[i].c_str(), static_cast<unsigned int>(frame_id));
         }
 
         for (pinocchio::JointIndex jid = 1; jid < model_.njoints; ++jid)
@@ -99,8 +99,8 @@ public:
             if (jmodel.nq() == 1)
             {
                 joint_name_to_q_index_[jname] = jmodel.idx_q();
-                RCLCPP_INFO(get_logger(), "Pinocchio joint: %s idx_q=%d",
-                            jname.c_str(), static_cast<int>(jmodel.idx_q()));
+                // RCLCPP_INFO(get_logger(), "Pinocchio joint: %s idx_q=%d",
+                //             jname.c_str(), static_cast<int>(jmodel.idx_q()));
             }
         }
 
@@ -133,29 +133,29 @@ private:
 
     void jointCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
     {
-        for (size_t i = 0; i < std::min<size_t>(msg->name.size(), 12); ++i)
-        {
-            if (i < msg->position.size())
-            {
-                RCLCPP_INFO(get_logger(), "joint_states[%zu]: %s = %.4f",
-                            i, msg->name[i].c_str(), msg->position[i]);
-            }
-        }
+        // for (size_t i = 0; i < std::min<size_t>(msg->name.size(), 12); ++i)
+        // {
+        //     if (i < msg->position.size())
+        //     {
+        //         RCLCPP_INFO(get_logger(), "joint_states[%zu]: %s = %.4f",
+        //                     i, msg->name[i].c_str(), msg->position[i]);
+        //     }
+        // }
         latest_joint_state_ = msg;
         tryPublish();
     }
 
     void contactCallback(const std_msgs::msg::Int32MultiArray::SharedPtr msg)
     {
-        std::ostringstream oss;
-        oss << "foot_contacts: [";
-        for (size_t i = 0; i < msg->data.size(); ++i)
-        {
-            if (i) oss << ", ";
-            oss << msg->data[i];
-        }
-        oss << "]";
-        RCLCPP_INFO(get_logger(), "%s", oss.str().c_str());
+        // std::ostringstream oss;
+        // oss << "foot_contacts: [";
+        // for (size_t i = 0; i < msg->data.size(); ++i)
+        // {
+        //     if (i) oss << ", ";
+        //     oss << msg->data[i];
+        // }
+        // oss << "]";
+        // RCLCPP_INFO(get_logger(), "%s", oss.str().c_str());
 
         for (size_t i = 0; i < 4 && i < msg->data.size(); ++i)
         {
@@ -219,9 +219,9 @@ private:
 
         Eigen::Vector3d foot_in_base = oMf_base.actInv(oMf_foot).translation();
 
-        RCLCPP_INFO(get_logger(), "Foot %zu pos in %s: %.4f %.4f %.4f",
-                    leg_idx, base_link_.c_str(),
-                    foot_in_base.x(), foot_in_base.y(), foot_in_base.z());
+        // RCLCPP_INFO(get_logger(), "Foot %zu pos in %s: %.4f %.4f %.4f",
+        //             leg_idx, base_link_.c_str(),
+        //             foot_in_base.x(), foot_in_base.y(), foot_in_base.z());
 
         out.x = foot_in_base.x();
         out.y = foot_in_base.y();
@@ -290,10 +290,10 @@ private:
                 continue;
             }
 
-            std::ostringstream oss;
-            oss << "contacts_[" << i << "]: " << contacts_[i]
-                << " have_last_pos[" << i << "]: " << have_last_pos_[i];
-            RCLCPP_INFO(get_logger(), "%s", oss.str().c_str());
+            // std::ostringstream oss;
+            // oss << "contacts_[" << i << "]: " << contacts_[i]
+            //     << " have_last_pos[" << i << "]: " << have_last_pos_[i];
+            // RCLCPP_INFO(get_logger(), "%s", oss.str().c_str());
 
             if (contacts_[i] > 0 && have_last_pos_[i])
             {
@@ -323,11 +323,11 @@ private:
         vel_body.y /= used_contacts;
         vel_body.z /= used_contacts;
 
-        Vec3 vel_world = rotateByQuaternion(latest_imu_->orientation, vel_body);
+        // Vec3 vel_world = rotateByQuaternion(latest_imu_->orientation, vel_body);
 
-        x_ += vel_world.x * dt;
-        y_ += vel_world.y * dt;
-        z_ += vel_world.z * dt;
+        x_ += vel_body.x * dt;
+        y_ += vel_body.y * dt;
+        z_ += vel_body.z * dt;
 
         nav_msgs::msg::Odometry odom;
         odom.header.stamp = stamp;
@@ -339,9 +339,9 @@ private:
         odom.pose.pose.position.z = z_;
         odom.pose.pose.orientation = latest_imu_->orientation;
 
-        odom.twist.twist.linear.x = vel_world.x;
-        odom.twist.twist.linear.y = vel_world.y;
-        odom.twist.twist.linear.z = vel_world.z;
+        odom.twist.twist.linear.x = vel_body.x;
+        odom.twist.twist.linear.y = vel_body.y;
+        odom.twist.twist.linear.z = vel_body.z;
         odom.twist.twist.angular = latest_imu_->angular_velocity;
 
         odom.pose.covariance[0] = 0.05;

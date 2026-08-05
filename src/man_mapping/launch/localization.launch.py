@@ -16,14 +16,6 @@ def generate_launch_description():
     robot_description = ParameterValue(Command(['cat ', go2_urdf_path]), value_type=str)
     ekf_yaml_path = os.path.join(man_mapping_share, 'params', 'go2_ekf.yaml')
 
- 
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen'
-    )
-
     return LaunchDescription([
         Node(
             package='robot_state_publisher',
@@ -35,7 +27,6 @@ def generate_launch_description():
                 'publish_frequency': 50.0,
             }]
         ),
-        rviz_node,
         Node(
             package='man_mapping',
             executable='odom_covariance_fixer',
@@ -53,8 +44,8 @@ def generate_launch_description():
             arguments=[
                 '--x', '0.0',
                 '--y', '0.0',
-                '--z', '0.0',
-                '--roll', '0.0',
+                '--z', '0.2',
+                '--roll', '3.14',
                 '--pitch', '0.0',
                 '--yaw', '0.0',
                 '--frame-id', 'base_link',
@@ -70,7 +61,7 @@ def generate_launch_description():
                 '--x', '0.0',
                 '--y', '0.0',
                 '--z', '0.2',
-                '--roll', '3.141592653589793',
+                '--roll', '3.14',
                 '--pitch', '0.0',
                 '--yaw', '0.0',
                 '--frame-id', 'base_link',
@@ -113,37 +104,41 @@ def generate_launch_description():
                 ],
             }],
         ),
+        # Node(
+        #     package='man_mapping',
+        #     executable='go2_leg_odometry',
+        #     name='go2_leg_odometry',
+        #     output='screen',
+        #     # prefix=['gdbserver localhost:3000'],
+        #     parameters=[
+        #         {'robot_description': robot_description},
+        #         {
+        #             'joint_states_topic': '/joint_states',
+        #             'foot_contacts_topic': '/foot_contacts',
+        #             'imu_topic': '/imu/data',
+        #             'odom_topic': '/odometry/leg',
+        #             'base_link': 'base_link',
+        #             'odom_frame': 'odom',
+        #             'foot_links': ['FR_foot', 'FL_foot', 'RR_foot', 'RL_foot'],
+        #         }
+        #     ],
+        # ),
+        
          Node(
             package='robot_localization',
             executable='ekf_node',
             name='ekf_filter_node',
             output='screen',
+            remappings=[
+                ('odometry/filtered', '/odom')
+            ],
             parameters=[
                 ekf_yaml_path,
                 {
                     'odom0': '/utlidar/robot_odom_fixed',
-                    'imu0': '/imu/data',
+                    # 'odom1': '/utlidar/robot_odom_fixed',
+                    'imu0': 'utlidar/imu',
                 }
             ],
         ),
-        Node(
-            package='man_mapping',
-            executable='go2_leg_odometry',
-            name='go2_leg_odometry',
-            output='screen',
-            prefix=['gdbserver localhost:3000'],
-            parameters=[
-                {'robot_description': robot_description},
-                {
-                    'joint_states_topic': '/joint_states',
-                    'foot_contacts_topic': '/foot_contacts',
-                    'imu_topic': '/imu/data',
-                    'odom_topic': '/odometry/leg',
-                    'base_link': 'base_link',
-                    'odom_frame': 'odom',
-                    'foot_links': ['FR_foot', 'FL_foot', 'RR_foot', 'RL_foot'],
-                }
-            ],
-        ),
-        
     ])

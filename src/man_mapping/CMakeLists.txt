@@ -17,8 +17,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(unitree_go REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(orocos_kdl REQUIRED)
-find_package(kdl_parser REQUIRED)
+find_package(pinocchio REQUIRED)
 find_package(urdf REQUIRED)
 
 
@@ -68,7 +67,9 @@ add_executable(go2_lowstate_bridge src/go2_lowstate_bridge.cpp)
 ament_target_dependencies(go2_lowstate_bridge nav_msgs rclcpp sensor_msgs unitree_go std_msgs)
 
 add_executable(go2_leg_odometry src/go2_leg_odometry.cpp)
-ament_target_dependencies(go2_leg_odometry rclcpp sensor_msgs std_msgs nav_msgs orocos_kdl kdl_parser urdf)
+ament_target_dependencies(go2_leg_odometry rclcpp sensor_msgs std_msgs nav_msgs urdf)
+
+target_link_libraries(go2_leg_odometry pinocchio::pinocchio)
 
 install(DIRECTORY
   launch

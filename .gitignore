@@ -25,3 +25,4 @@ __pycache__/
 *~
 .DS_Store
 src/unitree_ros2
+icp-logs/*

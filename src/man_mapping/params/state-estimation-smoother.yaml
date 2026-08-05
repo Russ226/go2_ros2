@@ -186,7 +186,7 @@ params:
 
   # Regular expression to filter odometry input labels/topics for processing
   # Default accepts all: ".*"
-  do_process_odometry_labels_re: "go2_wheel_odom"
+  do_process_odometry_labels_re: ".*"
 
   # Regular expression to filter GNSS (GPS) labels/topics for processing
   # Default accepts all: ".*"
