@@ -13,11 +13,11 @@ public:
 
     declare_parameter<std::vector<double>>(
       "pose_diagonal",
-      std::vector<double>{0.05, 0.05, 0.10, 0.5, 0.5, 0.5});
+      std::vector<double>{0.02, 0.02, 1.0, 1e3, 1e3, 0.5});
 
     declare_parameter<std::vector<double>>(
       "twist_diagonal",
-      std::vector<double>{0.05, 0.05, 0.10, 0.2, 0.2, 0.2});
+      std::vector<double>{0.02, 0.02, 1.0, 1e3, 1e3, 0.3});
 
     const auto input_topic = get_parameter("input_topic").as_string();
     const auto output_topic = get_parameter("output_topic").as_string();

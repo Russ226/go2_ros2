@@ -11,11 +11,11 @@ ekf_filter_node:
 
     odom0: /utlidar/robot_odom_fixed
     odom0_config: [
-      true,  true,  false,  # x, y
-      false, false, false,  # roll, pitch, yaw
-      true,  true,  false,  # vx, vy
+      true,  true,  true,  # x, y
+      true, true, true,  # roll, pitch, yaw
+      true,  true,  true,  # vx, vy
       false, false, true,  # vroll, vpitch, vyaw
-      false, false, false   # ax, ay, az
+      true, false, false   # ax, ay, az
     ]
     odom0_differential: false
     odom0_relative: false
@@ -35,9 +35,9 @@ ekf_filter_node:
 
     imu0: /utlidar/imu
     imu0_config: [
-      false, false, false,  # x, y, z 
-      true,  true,  false, # roll, pitch, yaw rates
-      false, false, false, # vx, vy, vz
+      true, true, true,  # x, y, z 
+      true,  true,  true, # roll, pitch, yaw rates
+      true, true, true, # vx, vy, vz
       false,  false,  false, # vroll, vpitch, vyaw
       false,  false,  false # ax, ay, az
     ]

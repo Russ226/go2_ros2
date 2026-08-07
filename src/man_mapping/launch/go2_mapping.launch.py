@@ -32,9 +32,9 @@ def generate_launch_description():
                 parameters=[{
                     'target_frame': 'base_link',
                     'min_height': 0.1,
-                    'max_height': 1.0,
+                    'max_height': 3.0,
                     'range_min': 0.1,
-                    'range_max': 10.0,
+                    'range_max': 20.0,
                     'angle_min': -3.14159,
                     'angle_max': 3.14159,
                     'use_inf': True
@@ -56,18 +56,18 @@ def generate_launch_description():
                 'resolution': 0.05,
                 'transform_publish_period': 0.5,
                 'map_update_interval': 0.5,
-                'max_laser_range': 10.0,
-                'minimum_time_interval': 0.09,
-                'minimum_travel_distance': 0.03,
-                'minimum_travel_heading': 0.08,
+                'max_laser_range': 20.0,
+                'minimum_time_interval': 0.2,
+                'minimum_travel_distance': 0.1,
+                'minimum_travel_heading': 0.15,
                 'transform_timeout': 0.3,
                 'tf_buffer_duration': 10.0,
                 'use_scan_matching': True,
                 'use_scan_barycenter': True,
-                'loop_search_maximum_distance': 2.0,
-                'loop_match_minimum_chain_size': 5,
-                'loop_match_minimum_response_coarse': 0.45,
-                'loop_match_minimum_response_fine': 0.55
+                'loop_search_maximum_distance': 1.5,
+                'loop_match_minimum_chain_size': 10,
+                'loop_match_minimum_response_coarse': 0.1,
+                'loop_match_minimum_response_fine': .1
             }]
         ),
         rviz_node

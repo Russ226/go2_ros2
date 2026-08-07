@@ -1,0 +1,72 @@
+cmake_minimum_required(VERSION 3.8)
+project(go2_cam)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(unitree_go REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(pinocchio REQUIRED)
+find_package(urdf REQUIRED)
+find_package(PkgConfig REQUIRED)
+
+
+pkg_check_modules(GSTREAMER REQUIRED IMPORTED_TARGET
+  gstreamer-1.0
+  gstreamer-app-1.0
+  gstreamer-video-1.0
+)
+
+add_executable(odom_covariance_fixer src/odom_covariance_fixer.cpp)
+ament_target_dependencies(odom_covariance_fixer rclcpp nav_msgs)
+
+add_executable(go2_video_to_image src/go2_video_to_image.cpp)
+ament_target_dependencies(go2_video_to_image rclcpp sensor_msgs unitree_go)
+target_link_libraries(go2_video_to_image PkgConfig::GSTREAMER)
+
+install(DIRECTORY
+  launch
+  meshes
+  dae
+  params
+  rviz
+  urdf
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(TARGETS
+  odom_covariance_fixer
+  go2_video_to_image
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(
+  PROGRAMS
+    scripts/yolo_camera_detector.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME yolo_camera_detector
+)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()
