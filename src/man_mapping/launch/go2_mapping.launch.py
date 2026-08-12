@@ -54,7 +54,7 @@ def generate_launch_description():
                 'scan_topic': '/scan',
                 'mode': 'mapping',
                 'resolution': 0.05,
-                'transform_publish_period': 0.5,
+                'transform_publish_period': 0.05,
                 'map_update_interval': 0.5,
                 'max_laser_range': 20.0,
                 'minimum_time_interval': 0.2,
@@ -64,10 +64,15 @@ def generate_launch_description():
                 'tf_buffer_duration': 10.0,
                 'use_scan_matching': True,
                 'use_scan_barycenter': True,
-                'loop_search_maximum_distance': 1.5,
+                'loop_search_maximum_distance': 4.0,
                 'loop_match_minimum_chain_size': 10,
+                'loop_match_maximum_variance_coarse': 3.0,
                 'loop_match_minimum_response_coarse': 0.1,
-                'loop_match_minimum_response_fine': .1
+                'loop_match_minimum_response_fine': 0.1,
+                'loop_search_space_dimension': 8.0,
+                'loop_search_space_resolution': 0.05,
+                'loop_search_space_smear_deviation': 0.03,
+                'use_response_expansion': True,
             }]
         ),
         rviz_node

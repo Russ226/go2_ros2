@@ -30,3 +30,5 @@ icp-logs/*
 go2/*
 *.gv
 frames*.pdf
+
+src/man_mapping/runs/*

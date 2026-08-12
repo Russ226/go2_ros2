@@ -1,0 +1,25 @@
+python debug_scripts/analyze_wall_ghosting.py --map-yaml ~/go2_ros2/src/man_mapping/runs/run2/run2.yaml --out-dir ~/go2_ros2/src/man_mapping/runs/run2/run2_analysis --min-wall-length 1.0 --max-ghost-separation 0.50
+
+/home/russ/go2_ros2/src/man_mapping/runs/run1
+/home/russ/go2_ros2/src/man_mapping/runs/run1/run1.yaml
+
+ros2 bag record \
+  -o ~/go2_ros2/src/man_mapping/runs/run2/rosbag \
+  /scan \
+  /tf \
+  /tf_static \
+  /odom \
+  /utlidar/imu \
+  /map
+  
+  
+  python debug_scripts/analyze_rosbag_double_wall.py \
+  --bag ~/go2_ros2/src/man_mapping/runs/run1/rosbag \
+  --scan-topic /scan \
+  --fixed-frame map \
+  --out-dir ~/go2_ros2/src/man_mapping/runs/run1/bag_wall_analysis \
+  --resolution 0.05 \
+  --scan-stride 2 \
+  --max-range 12.0 \
+  --min-wall-length 1.0 \
+  --max-ghost-separation 0.50
