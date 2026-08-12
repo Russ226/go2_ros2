@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import threading
-
+import numpy as np
 import cv2
 from cv_bridge import CvBridge
 import rclpy
@@ -102,8 +102,17 @@ class YoloCameraDetector(Node):
                         cv2.LINE_AA)
 
             self.detection_pub.publish(detections_msg)
-            annotated_msg = self.bridge.cv2_to_imgmsg(annotated, encoding='bgr8')
+            annotated = np.ascontiguousarray(annotated)
+
+            annotated_msg = Image()
             annotated_msg.header = image_msg.header
+            annotated_msg.height = annotated.shape[0]
+            annotated_msg.width = annotated.shape[1]
+            annotated_msg.encoding = 'bgr8'
+            annotated_msg.is_bigendian = False
+            annotated_msg.step = annotated.shape[1] * 3
+            annotated_msg.data = annotated.tobytes()
+
             self.annotated_pub.publish(annotated_msg)
 
         except Exception as exc:

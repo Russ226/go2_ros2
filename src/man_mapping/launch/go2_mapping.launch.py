@@ -11,12 +11,12 @@ def generate_launch_description():
     localization_launch = os.path.join(man_mapping_share, 'launch', 'localization.launch.py')
     
     localization = IncludeLaunchDescription(PythonLaunchDescriptionSource(localization_launch))
-    # rviz_config_path = os.path.join(man_mapping_share, 'rviz', 'go2_slam.rviz')
+    rviz_config_path = os.path.join(man_mapping_share, 'rviz', 'go2_async_slam.rviz')
     rviz_node = Node(
             package='rviz2',
             executable='rviz2',
             name='rviz2',
-            # arguments=['-d', rviz_config_path],
+            arguments=['-d', rviz_config_path],
             output='screen'
     )
     return LaunchDescription([

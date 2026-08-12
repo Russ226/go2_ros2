@@ -104,6 +104,20 @@ def generate_launch_description():
                 }],
         ),
         Node(
+            package='go2_cam',
+            executable='yolo_camera_detector',
+            name='yolo_camera_detector',
+            output='screen',
+            parameters=[{
+                'input_topic': '/utlidar/camera',
+                'detection_topic': '/utlidar/camera_dect',
+                'annotated_topic': '/utlidar/camera_dect/image',
+                'model_path': 'yolo11n.pt',
+                'confidence': 0.40,
+                'max_fps': 10.0,
+            }],
+        ),
+        Node(
             package='rviz2',
             executable='rviz2',
             name='rviz2',
