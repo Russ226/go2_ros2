@@ -23,3 +23,9 @@ ros2 bag record \
   --max-range 12.0 \
   --min-wall-length 1.0 \
   --max-ghost-separation 0.50
+
+
+python debug_scripts/measure_odom_closure_drift.py \
+  --odom-frame odom \
+  --base-frame base_link \
+  --output ~/go2_ros2/src/man_mapping/runs/odom_trajectory.csv

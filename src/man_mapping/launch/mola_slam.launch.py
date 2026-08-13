@@ -25,10 +25,11 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         arguments=['-d', rviz_config_path],
+        # parameters=[{'use_sim_time': True}],
         output='screen'
     )
     localization_launch = os.path.join(
-        man_mapping_share, 'launch', 'localization.launch.py'
+        man_mapping_share, 'launch', 'mola.localization.launch.py'
     )
 
     localization = IncludeLaunchDescription(
@@ -38,17 +39,19 @@ def generate_launch_description():
     mola_lio = IncludeLaunchDescription(
     PythonLaunchDescriptionSource(mola_launch_file),
     launch_arguments={
-        'gnss_topic_name': '/gps',
+        # 'use_sim_time': 'True',
+        'start_active': "False",
+        # 'use_mola_gui': 'False',
         'use_namespace': 'False',
         'use_rviz': 'False',
         'lidar_topic_name': '/utlidar/cloud',
         'lidar_qos_depth': '100',
         'imu_qos_depth': '1000',
-        'imu_topic_name': '/imu/data',
+        'imu_topic_name': '/utlidar/imu',
         'mola_tf_base_link': 'base_link',
         'odom_topic_name': '/odometry/filtered',
         'odom_sensor_label': 'ekf_odom',
-        'publish_localization_following_rep105': 'False',
+        'publish_localization_following_rep105': 'True',
         'forward_ros_tf_odom_to_mola': 'False',
         'use_imu_for_lio': 'True',
         'imu_gravity_correction': 'False',
@@ -56,11 +59,8 @@ def generate_launch_description():
         'initial_localization_method': 'InitLocalization::FixedPose',
         'mola_deskew_method': 'MotionCompensationMethod::None',
         'start_mapping_enabled': 'True',
-        'enforce_planar_motion':'True',
-        'use_state_estimator': 'True',
-        'state_estimator_config_yaml': smoother_yaml,
-        'navstate_sliding_window_sec': '2.0',
-        'navstate_kinematic_model': 'KinematicModel::ConstantVelocity',
+        'enforce_planar_motion':'False',
+        'generate_simplemap': 'False'
         
     }.items())
     
