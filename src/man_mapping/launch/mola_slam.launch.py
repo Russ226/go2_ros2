@@ -40,14 +40,14 @@ def generate_launch_description():
     PythonLaunchDescriptionSource(mola_launch_file),
     launch_arguments={
         # 'use_sim_time': 'True',
-        'start_active': "False",
+        'start_active': "True",
         # 'use_mola_gui': 'False',
         'use_namespace': 'False',
         'use_rviz': 'False',
-        'lidar_topic_name': '/utlidar/cloud',
-        'lidar_qos_depth': '100',
+        'lidar_topic_name': '/utlidar/cloud_accumulated',
+        'lidar_qos_depth': '10',
         'imu_qos_depth': '1000',
-        'imu_topic_name': '/utlidar/imu',
+        'imu_topic_name': '/utlidar/imu_bias_corrected',
         'mola_tf_base_link': 'base_link',
         'odom_topic_name': '/odometry/filtered',
         'odom_sensor_label': 'ekf_odom',
@@ -57,7 +57,7 @@ def generate_launch_description():
         'imu_gravity_correction': 'False',
         'imu_gravity_sigma_deg': '5.0',
         'initial_localization_method': 'InitLocalization::FixedPose',
-        'mola_deskew_method': 'MotionCompensationMethod::None',
+        'mola_deskew_method': 'MotionCompensationMethod::IMU',
         'start_mapping_enabled': 'True',
         'enforce_planar_motion':'False',
         'generate_simplemap': 'False'
@@ -66,7 +66,7 @@ def generate_launch_description():
     
        
     return LaunchDescription([
-        localization,
+        # localization,
         rviz_node,
         mola_lio
     ])

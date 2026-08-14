@@ -34,6 +34,39 @@ def generate_launch_description():
         }],
     )
 
+    # imu_covariance_fixer = Node(
+    #     package='man_mapping',
+    #     executable='imu_covariance_fixer',
+    #     name='imu_covariance_fixer',
+    #     output='screen',
+    #     parameters=[{
+    #         'input_topic': '/utlidar/imu',
+    #         'output_topic': '/utlidar/imu_fixed',
+
+    #         'orientation_diagonal': [0.05, 0.05, 0.20],
+    #         'angular_velocity_diagonal': [0.0025, 0.0025, 0.0025],
+    #         'linear_acceleration_diagonal': [0.25, 0.25, 0.25],
+    #     }],
+    # )
+
+    imu_gyro_bias = Node(
+        package='man_mapping',
+        executable='imu_bias_corrector',
+        name='imu_bias_corrector',
+        output='screen',
+        parameters=[{
+            'input_topic': '/utlidar/imu',
+            'output_topic': '/utlidar/imu_bias_corrected',
+            'startup_calibration_seconds' : 10.0,
+            'gyro_stationary_threshold_rad_s': 0.5,
+            'accel_magnitude_tolerance_m_s2': 1.25,
+            'stationary_bias_alpha': 0.001,
+            'orientation_diagonal': [0.05, 0.05, 0.20],
+            'angular_velocity_diagonal': [0.025, 0.025, 0.025],
+            'linear_acceleration_diagonal': [0.25, 0.25, 0.25] 
+        }],
+    )
+
     ekf = Node(
         package='robot_localization',
         executable='ekf_node',
@@ -54,16 +87,16 @@ def generate_launch_description():
             'odom0': '/utlidar/robot_odom_fixed',
             'odom0_config': [
                 True, True, False,
-                False, False, True,
+                False, False, False,
                 True, True, False,
                 False, False, True,
                 False, False, False,
             ],
-            'odom0_differential': True,
+            'odom0_differential': False,
             'odom0_relative': False,
             'odom0_queue_size': 20,
 
-            'imu0': '/utlidar/imu',
+            'imu0': '/utlidar/imu_bias_corrected',
             'imu0_config': [
                 False, False, False,
                 False, False, True,
@@ -86,8 +119,8 @@ def generate_launch_description():
             arguments=[
                 '--x', '0.0',
                 '--y', '0.0',
-                '--z', '0.2',
-                '--roll', '3.141592653589793',
+                '--z', '0.0',
+                '--roll', '0.0',
                 '--pitch', '0.0',
                 '--yaw', '0.0',
                 '--frame-id', 'base_link',
@@ -102,10 +135,10 @@ def generate_launch_description():
             arguments=[
                 '--x', '0.0',
                 '--y', '0.0',
-                '--z', '0.2',
-                '--roll', '3.141592653589793',
+                '--z', '0.0',
+                '--roll', '3.14159265359',
                 '--pitch', '0.0',
-                '--yaw', '0.0',
+                '--yaw', '1.57079632679',
                 '--frame-id', 'base_link',
                 '--child-frame-id', 'utlidar_lidar',
             ],
@@ -113,5 +146,7 @@ def generate_launch_description():
         ),
         robot_state_publisher,
         odom_covariance_fixer,
+        imu_gyro_bias,
+        # imu_covariance_fixer,
         ekf,
     ])

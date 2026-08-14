@@ -69,6 +69,12 @@ ament_target_dependencies(go2_lowstate_bridge nav_msgs rclcpp sensor_msgs unitre
 add_executable(go2_leg_odometry src/go2_leg_odometry.cpp)
 ament_target_dependencies(go2_leg_odometry rclcpp sensor_msgs std_msgs nav_msgs urdf)
 
+add_executable(imu_covariance_fixer src/imu_covariance_fixer.cpp)
+ament_target_dependencies(imu_covariance_fixer rclcpp sensor_msgs)
+
+add_executable(cloud_frame_accumulator src/cloud_frame_accumulator.cpp)
+ament_target_dependencies(cloud_frame_accumulator rclcpp sensor_msgs)
+
 target_link_libraries(go2_leg_odometry pinocchio::pinocchio)
 
 install(DIRECTORY
@@ -78,6 +84,7 @@ install(DIRECTORY
   params
   rviz
   urdf
+  # config
   DESTINATION share/${PROJECT_NAME}
 )
 
@@ -97,6 +104,8 @@ install(TARGETS
   pointcloud_rotator
   go2_lowstate_bridge
   go2_leg_odometry
+  imu_covariance_fixer
+  cloud_frame_accumulator
   DESTINATION lib/${PROJECT_NAME}
 )
 if(BUILD_TESTING)
