@@ -37,3 +37,4 @@ src/man_mapping/runs/*
 
 *.mm   
 *.simplemap
+*.pt
