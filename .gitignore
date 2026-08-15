@@ -34,3 +34,6 @@ frames*.pdf
 src/man_mapping/runs/*
 *.txt
 *.csv
+
+*.mm   
+*.simplemap
